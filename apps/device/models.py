@@ -4,11 +4,11 @@ from django.core.exceptions import ValidationError
 
 class Device(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    is_checkedout = models.BooleanField(default=False)
+    name = models.CharField(max_length=50, verbose_name="Device Name")
+    is_checkedout = models.BooleanField(default=False, help_text="By Default it will be false")
 
     def __str__(self):
-        return f"{self.name} {self.is_checkedout}"
+        return self.name
 
 
 class DeviceCheckout(models.Model):
