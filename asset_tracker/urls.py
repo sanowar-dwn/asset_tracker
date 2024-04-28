@@ -26,4 +26,5 @@ urlpatterns = [
         ), name= 'swagger-ui'),
     path('admin/', admin.site.urls),
     path('', include('api.company.urls')), #Company App APIs here
+    path('', include('api.device.urls')), #Company App APIs here
 ]
