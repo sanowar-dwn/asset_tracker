@@ -11,8 +11,8 @@ class Company(models.Model):
 
 class Employee(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    employee = models.OneToOneField(User, on_delete=models.CASCADE)
-    employee_number = models.IntegerField()
+    employee = models.CharField(max_length=50)
+    employee_id_number = models.IntegerField()
 
     def __str__(self):
-        return self.employee.username
+        return self.employee
