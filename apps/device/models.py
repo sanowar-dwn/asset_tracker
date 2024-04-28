@@ -8,7 +8,7 @@ class Device(models.Model):
     is_checkedout = models.BooleanField(default=False, help_text="By Default it will be false")
 
     def __str__(self):
-        return self.name
+        return f"{self.company} > {self.name} "
 
 
 class DeviceCheckout(models.Model):
@@ -28,7 +28,7 @@ class DeviceCheckout(models.Model):
     def save(self, *args, **kwargs):
         # Check if the device is not already checked out
         if not self.device.is_checkedout:
-            # Update is_checkedout attribute
+            # Update is_checkedout attribute to True when a new record is created
             self.device.is_checkedout = True
             # Save the updated device
             self.device.save()
@@ -52,7 +52,7 @@ class DeviceReturn(models.Model):
         # Call clean method to perform validation
         self.clean()
 
-        # Update is_checkedout attribute of the associated device
+        # Update is_checkedout attribute to False when a new record is created
         self.device.is_checkedout = False
 
         # Save the updated device
